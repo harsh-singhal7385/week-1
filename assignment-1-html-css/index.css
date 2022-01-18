@@ -1,0 +1,39 @@
+.product-img-class{
+    justify-content: center;
+    min-height: 20vh;
+    
+}
+
+.btn-circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textarea-box{
+    min-height: 20vh;
+}
+
+.central{
+    justify-content:  center;
+}
+.size-width{
+    min-width: 50vw;
+    min-height: 50vh;
+}
+
+.product-size{
+    font-size: 28px;
+}
+
+.color-index {
+    color: black;
+}
+
+.border-background{
+    border: 1px solid black;
+
+}
+
+.hover-btn:hover{
+    color: black;
+}
