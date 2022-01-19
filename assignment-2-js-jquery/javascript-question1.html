@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Quantiphi J2J - Week-1 Javascript</title>
+
+    <style>
+        .para-id{
+            font-size: 30px;
+        }
+        #text-input{
+            min-width: 30vw;
+            min-height: 20vh;
+        }
+    </style>
+    <script>
+        function getList(){
+            let ol_list =  document.getElementById("list-data-id")
+            ol_list.innerHTML = "" // Avoid overlapping of data again and again
+      //  let text = `Thank you so much for contacting us. Dreamland guest relations. You're speaking with Ronaldo. May I have your name, please? Yes, sure. My name is robin soleimani. What is your
+       // phone number? It is 9876535362 as mentioned in the book Diary. Thank you so much for providing the info!`;
+        let text =  document.getElementById("text-input").value 
+        
+        let patt = /[0-9]{10}/g
+        let ar = text.replace(patt,"XXXXXXXXXX")   // part-2 masking of number done
+        
+        
+        let data = ar.match(/[^.?!]+[.!?]+[\])'"`’”]*|.+/g)
+        
+        //console.log(data)
+        let len;
+        let arr = [];
+        let index = 1;
+        
+        for (let val of data){
+          val = val.trim() 
+          val = val.replace(/  /g," ")
+          len = (val.split(" ").length);
+          
+          if (len > 3){
+          arr.push(val);
+          }
+        
+        }
+          
+          for(let key of arr){
+            ol_list.innerHTML += `<li> ${key} </li>`
+            ol_list.innerHTML +=(`<br>`)
+          }
+          console.log(arr)
+          }
+          
+        
+        
+        </script>
+</head>
+<body>
+    <div class="container jumbotron">
+        <div class="display-4">
+            Welcome to Quantiphi's Javascript Question-1
+        </div>
+        <br>
+        <div>
+            <p class="para-id"> Data to be pasted in textarea</p>
+            <br />
+        Thank you so much for contacting us. Dreamland guest relations. You're speaking with Ronaldo. May I have your name, please? Yes, sure. My name is robin soleimani. What is your
+phone number? It is 9876535362 as mentioned in the book Diary. Thank you so much for providing the info!
+        
+        </div>
+        <div class="mt-5 mb-5">
+            <p class="para-id">Final Data List obtained</p>
+            <textarea  id = "text-input">
+                
+            </textarea>
+        </div>
+        <div class="mt-5 mb-5">
+            <button type = "button" class="btn btn-primary" onclick = "getList()" >Get List</button>
+        </div>
+        <div >
+            <ol class="list-data-class" id="list-data-id">
+                     
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
