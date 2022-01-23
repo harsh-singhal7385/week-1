@@ -9,11 +9,16 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="./index.css" rel="stylesheet" type="text/css"  />
+    
 </head>
 <style>
     .color-index {
         color: black;
+    }
+    .myclass{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 </style>
 <body >
@@ -33,30 +38,63 @@
                     To-Do List : 
                </div>
             </div>
+            <br />
+            <br />
             <div>
-                <div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="" />
+                <form action="/" method="GET" >
+                    <div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="title" id="title"  placeholder="Add Title" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="description" id="description"  placeholder="Add Description" />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="" />
+                    <br />
+                    <br />
+                    <div class="btn-class myclass">
+                        <button type="submit" class=" btn btn-warning"> 
+                            <!-- <a href="/add">Add Item</a> -->ADD
+                        </button>
+                        <button type="submit" class=" btn btn-primary"> 
+                            <!-- <a href="/search">Search Item</a> -->Search Item
+                        </button>
+                        <button type="submit" class=" btn btn-success"> 
+                            <!-- <a href="getlist">Get List</a> -->Get List
+                        </button>
                     </div>
-                </div>
-                <div class="btn-class row">
-                    <button type="button" class="col-2 btn btn-primary"> 
-                        ADD
-                    </button>
-                    <button type="button" class="col-2 btn btn-primary"> 
-                        ADD
-                    </button>
-                    <button type="button" class="col-2 btn btn-primary"> 
-                        ADD
-                    </button>
-                    <button type="button" class="col-2 btn btn-primary"> 
-                        ADD
-                    </button>
-                </div>
-            </div>    
+                </form>
+            </div>  
+            <br />
+            <br />
+            <br />
+            <div class="output-class">
+                <table class="table table-hover" >
+                    <thead>
+                        <tr >
+                            <th scope="col">Sr.no</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date Time</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for todo in alltodo %}
+                        <tr>
+                            <td id="index-id">{{loop.index}}</td>
+                            <td id="title-id">{{todo.title}}</td>
+                            <td id="description-id">{{todo.description}}</td>
+                            <td id="datetime-id">{{todo.datetime_var}}</td>
+                            <td id="actions-id">
+                                <a href="/delete/{{todo.index}}" type="button" class="btn" >Delete</a>
+                                <a href="/update/{{todo.index}}" type="button" class="btn" >Update</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>  
         </div>
     </div>
 </body>
