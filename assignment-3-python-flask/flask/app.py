@@ -17,47 +17,49 @@ class ToDoList(db.Model):
 @app.route('/', methods = ['GET', 'POST'])
 def home_page():
     
-    if request.method == "GET":
-        titleData = request.form['title']
-        descriptionData = request.form['description']
-        todo = ToDoList(title = titleData, description = descriptionData)
-        db.session.add(todo)
-        db.session.commit()
-        allTodo = ToDoList.query.all()
-    
-    return render_template('./index.html',allTodo = "")
-
-
-@app.route('/add', methods = ['GET', 'POST'])
-def addData():
     if request.method == "POST":
-        titleData = request.form['title']
-        descriptionData = request.form['description']
-        todo = ToDoList(title = titleData, description = descriptionData)
+        title_data = request.form['title']
+        description_data = request.form['description']
+        todo = ToDoList(title = title_data, description = description_data)
         db.session.add(todo)
         db.session.commit()
-        allTodo = ToDoList.query.all()
+    all_to_do = ToDoList.query.all()
     
-        return redirect('/',)
+    return render_template('./index.html',allTodo = all_to_do)
 
 
-@app.route('/update', methods = ['GET', 'POST'])
-def updateData():
-    return redirect('/')
+@app.route('/update/<int:index>', methods = ['GET', 'POST'])
+def update_data(index):
+    if request.method == "POST":
+        title_data = request.form['title']
+        description_data = request.form['description']
+        todo = ToDoList.query.filter_by(index = index).first()
+        todo.title = title_data
+        todo.description = description_data
+        db.session.add(todo)
+        db.session.commit()
+        return redirect('/')
+    all_todo = ToDoList.query.filter_by(index = index).first()
+    
+    return render_template('./update.html',allTodo = all_todo)
 
 
-@app.route('/delete', methods = ['GET', 'POST'])
-def deleteData():
+@app.route('/delete/<int:index>', methods = ['GET', 'POST'])
+def delete_data(index):
+    all_todo = ToDoList.query.filter_by(index = index).first()
+    db.session.delete(all_todo)
+    db.session.commit()
     return redirect('/')
 
 
 @app.route('/search', methods = ['GET', 'POST'])
-def searchData():
+def search_data(index):
+    all_todo = ToDoList.query.filter_by(index = index).first()
     return redirect('/')
 
 
 @app.route('/getlist', methods = ['GET', 'POST'])
-def getlistData():
+def get_list_data():
     return redirect('/')
 
 

@@ -48,76 +48,38 @@
     <div class="container jumbotron class">
         <div class="container ">
             <div class="header  text-center">
-                
                 <div class="display-4">
-                    Welcome to Quantiphi...
-                </div>
-                <div class="display-4">
-                   Week-1 J2J Assignment - 3 Python / Flask
+                    Update Data
                 </div>
             </div>
             <div class="header mt-5 text-center">
                <div class="display-4">
-                    To-Do List : 
+                    To-Do List Update data: 
                </div>
             </div>
             <br />
             <br />
             <div>
-                <form action="/" method="POST" >
+                <form action="/update/{{allTodo.index}}" method="POST" >
                     <div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="title" id="title"  placeholder="Add Title" />
+                            <input type="text" class="form-control" name="title" id="title" value={{allTodo.title}} placeholder="Add Title" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="description" id="description"  placeholder="Add Description" />
+                            <input type="text" class="form-control" name="description" id="description"  value={{allTodo.description}} placeholder="Add Description" />
                         </div>
                     </div>
                     <br />
                     <br />
                     <div class="btn-class myclass">
-                        <button type="submit" class=" btn btn-warning"> 
-                            Add
-                        </button>
-                        <button type="submit" class=" btn btn-primary"> 
-                            Search Item
-                        </button>
-                        <button type="submit" class=" btn btn-success"> 
-                            Get List
+                        <button type="submit" class=" btn btn-danger"> 
+                            Update
                         </button>
                     </div>
                 </form>
             </div>  
             <br />
             <br />
-            <br />
-            <div class="output-class">
-                <table class="table table-hover" id="" >
-                    <thead>
-                        <tr >
-                            <th scope="col">Sr.no</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Date Time</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for todo in allTodo %}
-                        <tr>
-                            <td id="index-id">{{loop.index}}</td>
-                            <td id="title-id">{{todo.title}}</td>
-                            <td id="description-id">{{todo.description}}</td>
-                            <td id="datetime-id">{{todo.datetime_var}}</td>
-                            <td id="actions-id">
-                                <a href="/delete/{{todo.index}}" type="button" class="btn btn-sm btn-primary" >Delete</a>
-                                <a href="/update/{{todo.index}}" type="button" class="btn btn-sm btn-info" >Update</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>  
         </div>
     </div>
 </body>
