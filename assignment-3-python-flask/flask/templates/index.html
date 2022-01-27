@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,30 +22,25 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+    .myclass_logout{
+        display: flex;
+        justify-content: flex-end;
+    }
 </style>
-<body >
+<body class=" ">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">To-Do List</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul> -->
-          <!-- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form> -->
+        <div class="collapse navbar-collapse myclass_logout" id="navbarSupportedContent">
+          <form class="form my-2 my-lg-0" method="POST" action="/logout"> 
+            <button class="btn btn-outline-success my-2 my-sm-0" action="/logout" type="submit">Logout</button>
+           </form>
         </div>
       </nav>
-    <div class="container jumbotron class">
+    <div class="container-fluid jumbotron class">
         <div class="container ">
             <div class="header  text-center">
                 
@@ -62,7 +59,7 @@
             <br />
             <br />
             <div>
-                <form action="/" method="POST" >
+                <form action="/add" method="POST" >
                     <div>
                         <div class="form-group">
                             <input type="text" class="form-control" name="title" id="title"  placeholder="Add Title" />
@@ -77,20 +74,15 @@
                         <button type="submit" class=" btn btn-lg btn-warning"> 
                             Add
                         </button>
-                        <!-- <button type="submit" class=" btn btn-primary"> 
-                            Search Item
-                        </button> -->
-                        <!-- <button type="submit" class=" btn btn-success"> 
-                            Get List
-                        </button> -->
                     </div>
                 </form>
+                
             </div>  
             <br />
             <br />
             <br />
             <div class="output-class">
-                <table class="table table-hover" id="" >
+                <table class="table table-hover" id="table" >
                     <thead>
                         <tr >
                             <th scope="col">Sr.no</th>
