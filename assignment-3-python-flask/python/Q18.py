@@ -47,7 +47,7 @@ class MyErrorClass(Exception):
             print(error.phone_num)
         
 
-obj = MyErrorClass(21, "abc", "abc@quantiphi.com", "9988776655")  
+obj = MyErrorClass(21, "abc", "abc@gmail.com", "9988776655")  
 obj.checkAges()
 obj.checkName()
 obj.checkEmail()
